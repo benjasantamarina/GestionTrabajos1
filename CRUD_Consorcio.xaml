@@ -1,0 +1,25 @@
+﻿<Window x:Class="GestionTrabajos1.CRUD_Consorcio"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionTrabajos1"
+        mc:Ignorable="d"
+        Title="CRUD_Consorcio" Height="450" Width="800"
+        Loaded ="Window_Loaded_1"
+        Closed="Window_Closed">
+    <Grid>
+        <Label Content="CUIT" HorizontalAlignment="Center" Margin="42,49,0,0" VerticalAlignment="Top" Width="152" HorizontalContentAlignment="Center" RenderTransformOrigin="0.641,0.474"/>
+        <TextBox Name="textcuit" IsEnabled="True" HorizontalAlignment="Left" Margin="347,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Height="20"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="349,114,0,0" VerticalAlignment="Top" Width="152" HorizontalContentAlignment="Center"/>
+        <TextBox Name="textnombre" HorizontalAlignment="Left" Margin="350,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="156" Height="22" />
+        <Label Content="Direccion" HorizontalAlignment="Left" Margin="354,198,0,0" VerticalAlignment="Top" Width="153" HorizontalContentAlignment="Center"/>
+        <TextBox Name="textdireccion" HorizontalAlignment="Left" Margin="354,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" Height="25"/>
+        <Label Content="Clave SUTERH" HorizontalAlignment="Left" Margin="355,284,0,0" VerticalAlignment="Top" Width="155" HorizontalContentAlignment="Center"/>
+        <TextBox Name="textsuterh" HorizontalAlignment="Left" Margin="357,324,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Height="23"/>
+        <Button Content="Registrar" HorizontalAlignment="Left" Margin="406,379,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <ComboBox Name="comboBoxConsorcios" HorizontalAlignment="Left" Margin="55,76,0,0" VerticalAlignment="Top" Width="120" IsEditable="True" SelectionChanged="comboBoxConsorcios_SelectionChanged"/>
+        
+
+    </Grid>
+</Window>

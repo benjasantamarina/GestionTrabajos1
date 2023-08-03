@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Administracion" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-RSUK8NRU;Initial Catalog=Administracion;User ID=sa" SettingsObjectName="GestionTrabajos1.Properties.Settings" SettingsPropertyName="AdministracionConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Consorcio" Member="Consorcio">
+    <Type Name="Consorcio">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CUIT" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ClaveSuterh" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Consorcio_Propiedad" Member="Propiedad" ThisKey="Id" OtherKey="ConsorcioID" Type="Propiedad" />
+      <Association Name="Consorcio_Trabajo" Member="Trabajo" ThisKey="Id" OtherKey="ConsorcioID" Type="Trabajo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Propiedad" Member="Propiedad">
+    <Type Name="Propiedad">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UF" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Piso" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Departamento" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ColumnaA" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="ColumnaB" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ColumnaC" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ColumnaD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ConsorcioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PropietarioID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Propiedad_Trabajo" Member="Trabajo" ThisKey="Id" OtherKey="PropiedadID" Type="Trabajo" />
+      <Association Name="Consorcio_Propiedad" Member="Consorcio" ThisKey="ConsorcioID" OtherKey="Id" Type="Consorcio" IsForeignKey="true" />
+      <Association Name="Propietario_Propiedad" Member="Propietario" ThisKey="PropietarioID" OtherKey="Id" Type="Propietario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Propietario" Member="Propietario">
+    <Type Name="Propietario">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DNI" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="CUIT" Type="System.String" DbType="NChar(11)" CanBeNull="true" />
+      <Column Name="Mail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Propietario_Propiedad" Member="Propiedad" ThisKey="Id" OtherKey="PropietarioID" Type="Propiedad" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Proveedor" Member="Proveedor">
+    <Type Name="Proveedor">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CUIT" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Direccion" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Categoria" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Association Name="Proveedor_Trabajo" Member="Trabajo" ThisKey="Id" OtherKey="ProveedorID" Type="Trabajo" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Trabajo" Member="Trabajo">
+    <Type Name="Trabajo">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Detalle" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Estado" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="ProveedorID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ConsorcioID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PropiedadID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Consorcio_Trabajo" Member="Consorcio" ThisKey="ConsorcioID" OtherKey="Id" Type="Consorcio" IsForeignKey="true" />
+      <Association Name="Propiedad_Trabajo" Member="Propiedad" ThisKey="PropiedadID" OtherKey="Id" Type="Propiedad" IsForeignKey="true" />
+      <Association Name="Proveedor_Trabajo" Member="Proveedor" ThisKey="ProveedorID" OtherKey="Id" Type="Proveedor" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
